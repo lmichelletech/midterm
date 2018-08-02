@@ -1,0 +1,16 @@
+#breed-wrap{
+    background-color: rgb(92, 200, 204);
+    min-width: 10vw;
+    min-height: 10vh;
+    display: block;
+    padding: 20px;
+    margin-bottom: 60px;
+}
+#breed-wrap a{
+    display: block;
+    font-size: 18px;
+    text-decoration: none;
+}
+#breed-wrap a:hover{
+    color: green;
+}
