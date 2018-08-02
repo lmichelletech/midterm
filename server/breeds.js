@@ -24,6 +24,7 @@ var updateId = function(req, res, next){
     next();
 }
 
+
 breedRouter.param('id', (req, res, next, id) =>{
     var breed = breeds.find(breed => {
         return breed.id == id;
@@ -39,8 +40,7 @@ breedRouter.param('id', (req, res, next, id) =>{
 })
 
 breedRouter.get('/', (req, res) =>{
-    res.json(breeds);
-    
+    res.json(breeds); 
 })
 
 
@@ -49,6 +49,13 @@ breedRouter.get('/:id', (req, res) => {
 
     res.json(breed || {});
 });
+
+// breedRouter.get('/', function (req, res) {
+//     // If it's not showing up, just use req.body to see what is actually being passed.
+//     console.log("drop down selection " + req.body.selectpicker);
+//     res.render('editbreed.html')
+// });
+
 
 // must cast id to convert to string
 breedRouter.post('/', updateId, (req, res) => {
@@ -76,7 +83,19 @@ breedRouter.put('/:id', (req, res) => {
 
 breedRouter.get('/delete/:id', (req, res) => {
     let id = req.params.id;
-        console.log("delete id " + id);
+    console.log("delete id " + req.params.id);
+
+    var breed = breeds.findIndex(breed => breed.id == req.params.id);
+    console.log("findindex delete id " + breed);
+    if(!breeds[breed]){
+        res.send("Delete failed. There is no record with that id for me to delete.");
+    }else{
+        var deleteBreed = breeds[breed];
+        breeds.splice(breed, 1);
+        res.json(breeds);
+    }
 })
+
+
 
 module.exports = breedRouter;

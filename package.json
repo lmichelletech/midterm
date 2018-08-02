@@ -19,6 +19,7 @@
   "homepage": "https://github.com/lmichelletech/homework-api-node#readme",
   "dependencies": {
     "express": "^4.16.3",
+    "method-override": "^3.0.0",
     "morgan": "^1.9.0"
   },
   "keywords": [

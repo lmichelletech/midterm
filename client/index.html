@@ -22,34 +22,37 @@
 
       <div id="mid">
             <div id="breedContainer">
-                <h1>Dog Breed Info</h1>
+                <h1>Dog Breeds</h1>
                 
                 <div id="breed-wrap">
-                    <a href="/breeds">get breeds</a>
-                    <a href="/breeds/1">get by id</a>
-                    <a href="/breeds/delete/2">delete by id</a>
+                    <a class="current" href="index.html">Home</a>
+                    <a href="/breeds">get all breeds</a>
+                    <a href="/breeds/1">get by id  example</a>
+                    <a href="/breeds/delete/2">delete by id example</a> 
                 </div>
 
+
                 <div>
-                        <form action="/breeds" method="POST">
-                            <label for="breedtype">Breed Type</label>
-                            <div>
-                                <input required type="text" name="breedtype" class="form-input">
-                            </div>
-                            <label for="size">Size</label>
-                            <div>
-                                <input required type="text" name="size" class="form-input">
-                            </div>
-                            <label for="origin">Origin</label>
-                            <div>
-                                <input type="text" name="origin" class="form-input">
-                            </div>
-                            <label for="image">Image URL</label>
-                            <div>
-                                <input  type="text" name="image" class="form-input">
-                            </div>
-                            <button type="submit" class="form-btn">Submit</button>
-                        </form>
+                    <h3>Add a breed</h3>
+                    <form action="/breeds" method="POST">
+                        <label for="breedtype">Breed Type</label>
+                        <div>
+                            <input required type="text" name="breedtype" class="form-input">
+                        </div>
+                        <label for="size">Size</label>
+                        <div>
+                            <input required type="text" name="size" class="form-input">
+                        </div>
+                        <label for="origin">Origin</label>
+                        <div>
+                            <input type="text" name="origin" class="form-input">
+                        </div>
+                        <label for="image">Image URL</label>
+                        <div>
+                            <input  type="text" name="image" class="form-input">
+                        </div>
+                        <button type="submit" class="form-btn">Submit</button>
+                    </form>
                 </div>
 
             </div>
