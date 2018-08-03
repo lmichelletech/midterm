@@ -29,11 +29,12 @@
                     <a href="/breeds">get all breeds</a>
                     <a href="/breeds/1">get by id  example</a>
                     <a href="/breeds/delete/2">delete by id example</a> 
+                    <a href="/edit">update breed by extenal page</a>
                 </div>
 
 
-                <div>
-                    <h3>Add a breed</h3>
+                <h3>Create a breed</h3>
+                <div class="forms">
                     <form action="/breeds" method="POST">
                         <label for="breedtype">Breed Type</label>
                         <div>
@@ -54,15 +55,18 @@
                         <button type="submit" class="form-btn">Submit</button>
                     </form>
                 </div>
-
             </div>
       </div>
 
-      <div id="bottom"></div>
+      <div id="bottom">
+          <h3>Update a Breed</h3>
+          <div id="inline-breed"></div>
+      </div>
   </div>
 
   <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
   <script src="/app.js"></script>
+
 </body>
 
 </html>

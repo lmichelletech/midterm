@@ -1,3 +1,4 @@
+var path = require('path');
 var breedRouter = require('express').Router();
 var breeds = [{
     'id': 1,
@@ -43,18 +44,25 @@ breedRouter.get('/', (req, res) =>{
     res.json(breeds); 
 })
 
-
 breedRouter.get('/:id', (req, res) => {
     var breed = req.breed;
 
     res.json(breed || {});
 });
 
-// breedRouter.get('/', function (req, res) {
-//     // If it's not showing up, just use req.body to see what is actually being passed.
-//     console.log("drop down selection " + req.body.selectpicker);
-//     res.render('editbreed.html')
-// });
+breedRouter.get('/type/:id', (req, res) => {
+    var breedtype = req.params.id;
+    console.log('breedtype ' + breedtype);
+
+    var breed = breeds.findIndex(breed => breed.id == breedtype);
+
+    console.log("findindex delete id " + breed);
+    if(!breeds[breed]){
+        res.json("There is no record for that breedtype.");
+    }else{
+        res.redirect('/editbreed.html', { breed : breeds[breed]});
+    }
+});
 
 
 // must cast id to convert to string
@@ -65,7 +73,45 @@ breedRouter.post('/', updateId, (req, res) => {
     res.json(breed);
 });
 
-breedRouter.put('/:id', (req, res) => {
+
+breedRouter.get('/editbreed/:id', (req, res) => {
+    var id = req.params.id;
+    var update = req.body;
+    console.log("update " + update.id);
+    if(update.id){
+        delete update.id;
+    }
+
+    var breed = breeds.findIndex(breed => breed.id == id);
+    if(!breeds[breed]){
+        res.send();
+    }
+    else{
+        var updateBreed = Object.assign(breeds[breed], update);
+        res.json(updateBreed);
+    } 
+});
+
+
+breedRouter.post('/editbreed', (req, res) => {
+    var update = req.body;
+    // console.log("update " + update.id);
+    // if(update.id){
+    //     delete update.id;
+    // }
+
+    var breed = breeds.findIndex(breed => breed.id == req.body.id);
+    // console.log("---> breed " + breed + " body " + req.body.id);
+    if(!breeds[breed]){
+        res.send();
+    }
+    else{
+        var updateBreed = Object.assign(breeds[breed], update);
+        res.json(updateBreed);
+    } 
+})
+
+breedRouter.post('/edit/:id', (req, res) => {
     var update = req.body;
     if(update.id){
         delete update.id;
